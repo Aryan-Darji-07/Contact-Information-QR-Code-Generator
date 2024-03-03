@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Contact Information QR Code Generator</title>
+  </head>
+  <body>
+    <!-- Start - Splash Animation -->
+    <div class="splash-screen" id="splashScreen">
+      <div class="splash-content">
+        <script
+          src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"
+        ></script>
+        <dotlottie-player
+          src="https://lottie.host/1ddf984b-7523-4baf-9015-a04b667a4030/pCYVGqAZRv.json"
+          background="transparent"
+          speed="1.5"
+          style="width: 400px; height: 400px"
+          loop
+          autoplay
+        ></dotlottie-player>
+        <p style="font-family: cursive; font-size: 1rem">The Creator : Aryan</p>
+      </div>
+    </div>
+    <!-- End - Splash Animation -->
+    
+    <div class="form-structor" id="formstructor">
+      <div class="enter">
+        <h2 class="form-title" id="enter">Generate QR</h2>
+        <div class="form-holder">
+          <input type="text" id="name" class="input" placeholder="Name" />
+          <input
+            type="number"
+            id="mn"
+            class="input"
+            placeholder="Mobile Number"
+          />
+          <input type="email" id="email" class="input" placeholder="Email" />
+          <div id="qr-container">
+            <!-- Generated QR code will be displayed here -->
+          </div>
+        </div>
+        <button class="submit-btn" id="generate">Generate</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
