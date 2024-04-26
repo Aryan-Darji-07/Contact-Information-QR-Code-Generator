@@ -1,9 +1,9 @@
 console.clear();
 
 setTimeout(function () {
-    document.getElementById("splashScreen").style.display = "none";
-    document.getElementById("formstructor").style.display = "block";
-  }, 4000); // 4000 milliseconds
+  document.getElementById("splashScreen").style.display = "none";
+  document.getElementById("formstructor").style.display = "block";
+}, 4000); // 4000 milliseconds
 
 const signupBtn = document.getElementById("enter");
 const gen = document.getElementById("generate");
@@ -32,20 +32,25 @@ gen.addEventListener("click", () => {
       alert("Please enter name , phone number and email.");
       return;
   }
-  nameInput.style.display = "none";
-  phoneInput.style.display = "none";
-  emailInput.style.display = "none";
-  qrContainer.style.display = "block";
-  const qrData = `BEGIN:VCARD\nVERSION:3.0\nN:${name};;;;\nEMAIL:${email}\nTEL:+91${phone}\nEND:VCARD`;
-  generateQRCode(qrData);
-});
-
-function generateQRCode(data) {
-  qrContainer.innerHTML = ""; // Clear previous QR code
   
-  // Use Google Charts API to generate QR code image
-  const qrImageUrl = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(data)}`;
+  
+  const qrData = `BEGIN:VCARD\nVERSION:3.0\nN:${name};;;;\nEMAIL:${email}\nTEL:+91${phone}\nEND:VCARD`;
+
+  
+  qrContainer.innerHTML = "";
+  
+  
+  const qr = qrcode(0, "M");
+  qr.addData(qrData);
+  qr.make();
+  const qrImageUrl = qr.createDataURL();
+
+  
   const qrImg = document.createElement("img");
   qrImg.src = qrImageUrl;
   qrContainer.appendChild(qrImg);
-}
+  qrContainer.style.display = "block";
+  nameInput.style.display = "none";
+  phoneInput.style.display = "none";
+  emailInput.style.display = "none";
+});
